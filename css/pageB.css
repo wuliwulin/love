@@ -1,0 +1,29 @@
+/* 背景图 */
+
+.b_background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.b_background_dark{
+	width: 100%;
+	height: 100%;
+	background-image:url("../images/QixiB-dark.png");
+	background-size:100% 100%;  
+}
+
+/* .b_background_middle{
+	width: 100%;
+	height: 13.1%;
+	background-image:url("../images/background/c_background_middle.png");
+	background-size:100% 100%;
+	 
+} */
+
+/* .b_background_bottom{
+	width: 100%;
+	height: 15.3%;
+	background-image: url("../images/background/c_background_bottom.png");
+	background-size: 100% 100%;
+} */

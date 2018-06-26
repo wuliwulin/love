@@ -1,0 +1,29 @@
+/* 背景图 */
+
+.c_background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.c_background_top{
+	width: 100%;
+	height: 71.6%;
+	background-image:url("../images/background/c_background_top.png");
+	background-size:100% 100%;  
+}
+
+.c_background_middle{
+	width: 100%;
+	height: 13.1%;
+	background-image:url("../images/background/c_background_middle.png");
+	background-size:100% 100%;
+	 
+}
+
+.c_background_bottom{
+	width: 100%;
+	height: 15.3%;
+	background-image: url("../images/background/c_background_bottom.png");
+	background-size: 100% 100%;
+}

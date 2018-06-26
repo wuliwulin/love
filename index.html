@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>情人节特辑</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/pageA.css">
+	<link rel="stylesheet" type="text/css" href="css/pageB.css">
+	<link rel="stylesheet" type="text/css" href="css/pageC.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="js/jquery.transit.js"></script>
+</head>
+<body>
+	<div id="content">
+	    <ul class="content-wrap">
+	    	<!-- 第一幅图 -->
+			<li>
+				<!-- 背景图 -->
+				<div class="a_background">
+					<div class="a_background_top"></div>
+					<div class="a_background_middle"></div>
+					<div class="a_background_bottom"></div>
+				</div>
+				<!-- 云朵 -->
+				<div class="cloudArea">
+					<div class="cloud cloud1"></div>
+					<div class="cloud cloud2"></div>
+				</div>
+				<!-- 太阳 -->
+				<div id="sun" class="sun"></div>
+			</li>
+
+			<!-- 第二幅图 -->
+			<li>
+				<!-- 背景图 -->
+				<div class="b_background">
+					<div class="b_background_dark"></div>
+				</div>
+			</li>
+
+            <!-- 第三幅图 -->
+			<li>
+				<!-- 背景图 -->
+				<div class="c_background">
+					<div class="c_background_top"></div>
+					<div class="c_background_middle"></div>
+					<div class="c_background_bottom"></div>
+				</div>
+			</li>
+		</ul>
+
+		<div id="boy" class="charector"></div>
+		<div class="button">
+			<button id="start">hhh</button>
+			<button id="pause">ppp</button>
+		</div>	
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			//调用接口
+        	var container = $('#content');
+        	var swipe = Swipe(container);
+        	//男孩走路
+        	var boy = boyWalk();
+
+        	//开始
+			$('#start').click(function(){
+				//开始第一次走路
+				boy.walkTo(5000,0.8)
+				.then(function() {
+					//第一次走路完成
+					swipe.scrollTo(container.width()*2,1000);
+				})
+				.then(function(){
+					//第二次走路完成
+					
+				});
+        }); 
+
+        $('#pause').click(function(){
+        	var left = $boy.css('left');
+            // 强制做了一个改变目标left的处理
+            // 动画是要运行10秒,所以此时动画还是没有结束的
+            $boy.css('left',left);
+            // 增加暂停的样式
+        	$boy.addClass('pauseWalk');
+        	console.log('paused');
+        });
+		})
+    </script>
+    <script type="text/javascript" src="js/Swipe.js"></script>
+	<script type="text/javascript" src="js/Love.js"></script>
+</body>				
+</html>
