@@ -13,17 +13,27 @@
 	background-size:100% 100%;  
 }
 
-/* .b_background_middle{
+/* 门的布局 */
+.door{
+	position: absolute;
+    width: 13.5%;
+    height: 24%;
+    top: 48%;
+    left: 52%;
+    overflow: hidden;
+}
+.door-left,.door-right{
+	height: 100%;
 	width: 100%;
-	height: 13.1%;
-	background-image:url("../images/background/c_background_middle.png");
-	background-size:100% 100%;
-	 
-} */
+	position: absolute;
+}
 
-/* .b_background_bottom{
-	width: 100%;
-	height: 15.3%;
-	background-image: url("../images/background/c_background_bottom.png");
-	background-size: 100% 100%;
-} */
+.door-left{
+	left: 0%;
+	background: url("../images/door-left.png") no-repeat;	
+}
+.door-right{
+	left: 50%;
+	background: url("../images/door-right.png") no-repeat;
+}
+

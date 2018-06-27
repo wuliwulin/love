@@ -1,5 +1,5 @@
 /**
- * 小孩走路
+ * 男孩走路
  * @param {[type]} container [description]
  */
  function boyWalk(){
@@ -28,7 +28,7 @@
 		return data.top + data.height / 2; 
 	}();
 
-	//修正小男孩的正确位置
+	//修正男孩的正确位置
 	//路的中间位置减去小孩的高度，25是一个修正值
 	$boy.css({
 		top:pathY - boyHeight + 25
@@ -89,6 +89,54 @@
 	    return d1;
 	}
 
+	//进入商店
+	function walkToShop(runTime){
+		var defer = $.Deferred();
+		var doorObj = $('.door');
+
+		//门的坐标
+		var offsetDoor = doorObj.offset();
+		var offsetDoorLeft = offsetDoor.left;
+		console.log(doorObj);
+		//男孩当前的坐标
+		var offsetBoy = $boy.offset();
+		var offsetBoyLeft = offsetBoy.left;
+
+		//需要移动的坐标
+		instanceX = (offsetDoorLeft + doorObj.width()/2 ) - ( offsetBoyLeft + $boy.width()/2);
+
+		//开始走路
+		var walkPlay  = startRun({
+			transform:'translateX(' + instanceX + 'px),scale(0.3,0.3)',
+			opacity:0.1
+		},runTime);
+
+		//走路结束
+		walkPlay.done(function(){
+			$boy.css({
+				opacity:0
+			})
+			defer.resolve();
+		});
+		return defer;
+	}
+    
+    //走出商店
+    function walkOutShop(runTime){
+    	var defer = $.Deferred();
+    	restartWalk();
+    	//开始走路
+		var walkPlay = startRun({
+		    transform: 'translateX(' + instanceX + 'px),scale(1,1)',
+		    opacity: 1
+		}, runTime);
+		//走路完毕
+		walkPlay.done(function() {
+		    defer.resolve();
+		});
+		return defer;
+    }
+
 	return {
         // 开始走路
         walkTo: function(time, proportionX, proportionY) {
@@ -96,17 +144,53 @@
             var distY = calculateDist('y', proportionY)
             return walkRun(time, distX, distY);
         },
+        // 走进商店
+        toShop: function() {
+            return walkToShop.apply(null, arguments);
+        },
+        // 走出商店
+        outShop: function() {
+            return walkOutShop.apply(null, arguments);
+        },
         // 停止走路
         stopWalk: function() {
             pauseWalk();
-        },
-        setColoer:function(value){
-            $boy.css('background-color',value)
         }
+
     }
 }
 
-
+/** 
+* 
+* 门的动画处理
+* 
+*/
+function doorAction(left,right,time){
+	var $door = $('.door');
+	var $doorLeft = $('.door-left');
+	var $doorRight = $('.door-right');
+	var defer = $.Deferred();
+	var count = 2;
+	//等待门开完成
+	var complete = function (){
+		if (count === 1) {
+			defer.resolve();
+			return;
+		}
+		count --;
+	};
+	$doorLeft.transition({'left':left},time,complete);
+	$doorRight.transition({'left':right},time,complete);
+	return defer;
+}
+//门开
+function openDoor(){
+	return doorAction('-50%','100%',2000);
+}
+//门关
+function shutDoor(){
+	return doorAction('0%','50%',2000);
+}
 
 
 
