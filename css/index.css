@@ -101,3 +101,46 @@ button{
     -moz-animation-play-state:paused;
     -webkit-animation-play-state:paused;
 }
+
+
+.flowerWalk{
+	animation:take-flower 950ms infinite steps(1,start);
+	-webkit-animation:take-flower 950ms infinite steps(1,start);
+	-moz-animation:take-flower 950ms infinite steps(1,start);
+}
+
+@-webkit-keyframes take-flower{
+	0% {
+		background-position: -302px -0px;
+	}
+	25% {
+		background-position: -906px -0px;
+	}
+	50% {
+		background-position: -453px -0px;
+	}
+	75% {
+		background-position: -755px -0px;
+	}
+	100% {
+		background-position: -302px -0px;
+	}
+}
+
+@-moz-keyframes take-flower{
+	0% {
+		background-position: -302px -0px;
+	}
+	25% {
+		background-position: -906px -0px;
+	}
+	50% {
+		background-position: -453px -0px;
+	}
+	75% {
+		background-position: -755px -0px;
+	}
+	100% {
+		background-position: -302px -0px;
+	}
+}

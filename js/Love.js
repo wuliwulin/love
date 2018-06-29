@@ -137,6 +137,16 @@
 		return defer;
     }
 
+    //取花
+    function takeFlower(){
+    	var defer = $.Deferred();
+    	setTimeout(function(){
+    		$boy.addClass('flowerWalk');
+    		defer.resolve();
+    	},1000);
+    	return defer;
+    }
+
 	return {
         // 开始走路
         walkTo: function(time, proportionX, proportionY) {
@@ -147,6 +157,9 @@
         // 走进商店
         toShop: function() {
             return walkToShop.apply(null, arguments);
+        },
+        takeFlower:function(){
+        	return takeFlower();
         },
         // 走出商店
         outShop: function() {
@@ -192,5 +205,19 @@ function shutDoor(){
 	return doorAction('0%','50%',2000);
 }
 
-
-
+/**
+*灯的闪烁处理
+*
+*/
+var lamp = {
+	elem1: $(".b_background_dark"),
+	elem2: $(".b_background_bright"),
+	bright: function(){
+		this.elem1.addClass('hide');
+		this.elem2.removeClass('hide');
+	},
+	dark: function(){
+		this.elem1.removeClass('hide');
+		this.elem2.addClass('hide');
+	}
+}
